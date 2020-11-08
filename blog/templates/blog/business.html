@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% block title %} 
+Business Blog
+{% endblock %}
+{% block content %}
+
+<section class="container">
+	{% for post in posts %}
+	<!-- <h1>{{post.title}}</h1>
+	<p>By {{post.author}} on {{post.date_posted}}</p>
+	<p>{{post.content}}</p> -->
+	<div class="list-group">
+		<article>
+			<div class="media-body">
+				<div class="list-group">
+					<a href="#">{{ post.author }}</a>
+					<small>{{ post.date_posted }}</small>
+				</div>
+				<h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+				<p>{{ post.content }}</p>
+			</div>
+		</article>
+	</div>
+	{% endfor %}
+</section>
+
+<section class="container">
+	<!-- <form action="" method="post">
+		<p>Please submit your Blog:
+			<input type="text" name="url">
+		</p>
+		<p>
+			<button type="submit">Submit</button>
+		</p>
+	</form> -->
+	<div>
+		<section>
+			<a href="{% url 'post-create' %}">Click here to create new post</a>
+		</section>
+	</div>
+</section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
